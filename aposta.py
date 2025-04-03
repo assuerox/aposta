@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-
 def calcular_ganhos(odd_time1, odd_time2, valor_total):
     aposta_time1 = valor_total / (odd_time1 + odd_time2) * odd_time2
     aposta_time2 = valor_total / (odd_time1 + odd_time2) * odd_time1
@@ -20,7 +19,6 @@ def calcular_ganhos(odd_time1, odd_time2, valor_total):
         "% do Valor Total": [percentual_time1, percentual_time2]
     }
 
-
 def calcular_aposta_lucro_odd_menor(odd_time1, odd_time2, valor_total):
     if odd_time1 < odd_time2:
         aposta_time1 = valor_total - (valor_total / odd_time2)
@@ -33,7 +31,6 @@ def calcular_aposta_lucro_odd_menor(odd_time1, odd_time2, valor_total):
     ganho_time2 = aposta_time2 * odd_time2
     lucro_time1 = ganho_time1 - valor_total
     lucro_time2 = ganho_time2 - valor_total
-
     percentual_time1 = (lucro_time1 / valor_total) * 100
     percentual_time2 = (lucro_time2 / valor_total) * 100
 
@@ -44,7 +41,6 @@ def calcular_aposta_lucro_odd_menor(odd_time1, odd_time2, valor_total):
         "Lucro (R$)": [lucro_time1, lucro_time2],
         "% do Valor Total": [percentual_time1, percentual_time2]
     }
-
 
 def calcular_aposta_lucro_odd_maior(odd_time1, odd_time2, valor_total):
     if odd_time1 > odd_time2:
@@ -58,7 +54,6 @@ def calcular_aposta_lucro_odd_maior(odd_time1, odd_time2, valor_total):
     ganho_time2 = aposta_time2 * odd_time2
     lucro_time1 = ganho_time1 - valor_total
     lucro_time2 = ganho_time2 - valor_total
-
     percentual_time1 = (lucro_time1 / valor_total) * 100
     percentual_time2 = (lucro_time2 / valor_total) * 100
 
@@ -69,7 +64,6 @@ def calcular_aposta_lucro_odd_maior(odd_time1, odd_time2, valor_total):
         "Lucro (R$)": [lucro_time1, lucro_time2],
         "% do Valor Total": [percentual_time1, percentual_time2]
     }
-
 
 st.title("Calculadora de Apostas com Odds")
 col1, col2, col3 = st.columns([1, 1, 1])
@@ -97,6 +91,9 @@ if calcular:
     df_resultados_ajustados_maior = pd.DataFrame(resultados_ajustados_maior)
     st.subheader("Tabela Ajustada (Lucro Total no Time de Odd Maior)")
     st.table(df_resultados_ajustados_maior)
+
+st.markdown("---")
+st.markdown("<p style='font-size: 12px; text-align: center;'>📌 Créditos: <b>Assuero Ximenes</b></p>", unsafe_allow_html=True)
 
 
 
